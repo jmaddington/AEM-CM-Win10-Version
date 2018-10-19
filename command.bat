@@ -1,6 +1,9 @@
 #Get min Windows version to test against
 $MinVersion = If ($env:MinVersion -eq $null ) {"1803"} Else {$env:MinVersion}
 
+#Get UDF to set, if any
+$udf = If ($env:udf -eq $null ) {$false} Else {$env:MinVersion}
+
 #Get current Windows version
 $ver = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ReleaseId
 
@@ -11,7 +14,7 @@ $ver = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").R
 If ($ver -lt $MinVersion)
 {
     Write-Host "<-Start Result->"
-    Write-Host  "$ver"
+    Write-Host  "version=$ver"
     Write-Host "<-End Result->"
 
     Write-Host "<-Start Diagnostic->"
@@ -22,12 +25,19 @@ If ($ver -lt $MinVersion)
 
     Write-Host "<-End Diagnostic->"
 
-    Exit 1
+    $exitcode = 1
 
 } Else {
     Write-Host "<-Start Result->"
-    Write-Host "$ver"
+    Write-Host "version=$ver"
     Write-Host "<-End Result->"""
 
-    Exit 0
+    $exitcode = 0
 }
+
+#Set UDF, if required.
+If (!($udf -eq $false)) {
+    REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\CentraStage /v $udf /t REG_SZ /d $ver /f
+}
+
+Exit $exitcode
