@@ -1,20 +1,15 @@
 <component info='CentraStage Component'>
   <general>
-    <name>Windows 10 Version compnent monitor [WIN]</name>
+    <name>Windows 10 Version component monitor [WIN]</name>
     <category>monitors</category>
-    <description>Monitors Win 10 for latest version of Windows</description>
-    <uid>fe015dbf-662d-4740-9860-2f79751c3931</uid>
+    <description>Monitors Win 10 for latest version of Windows.
+
+win10_minimum_version and win10_version_udf  should be set at site or account level.</description>
+    <uid>f98201c8-d424-49c0-b47b-8f7e7fe1d00c</uid>
     <hash />
-    <version>4</version>
-    <timeout>3600</timeout>
+    <version>42</version>
+    <timeout>180</timeout>
     <securityLevel>1</securityLevel>
     <installType>powershell</installType>
   </general>
-  <variable idx='0'>
-    <name>MinVersion</name>
-    <type>string</type>
-    <direction>false</direction>
-    <description>What is the min version to test against?</description>
-    <defaultVal>1803</defaultVal>
-  </variable>
 </component>
