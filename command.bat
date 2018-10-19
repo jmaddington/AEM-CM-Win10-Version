@@ -10,9 +10,9 @@ $ver = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").R
 
 If ($ver -lt $MinVersion)
 {
-    Write-Host "<-Start Result->
-$ver
-<-End Result->"
+    Write-Host "<-Start Result->"
+    Write-Host  "$ver"
+    Write-Host "<-End Result->"
 
     Write-Host "<-Start Diagnostic->"
 
@@ -25,9 +25,9 @@ $ver
     Exit 1
 
 } Else {
-        Write-Host "<-Start Result->
-$ver
-<-End Result->"
+    Write-Host "<-Start Result->"
+    Write-Host "$ver"
+    Write-Host "<-End Result->"""
 
     Exit 0
 }
