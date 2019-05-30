@@ -30,7 +30,7 @@ If ($ver -lt $MinVersion)
 } Else {
     Write-Host "<-Start Result->"
     Write-Host "version=$ver"
-    Write-Host "<-End Result->"""
+    Write-Host "<-End Result->"
 
     $exitcode = 0
 }
