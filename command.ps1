@@ -1,8 +1,8 @@
 #Get min Windows version to test against
-$MinVersion = If ($env:win10_minimum_version -eq $null ) {"1803"} Else {$env:MinVersion}
+$MinVersion = If ($null -eq $env:win10_minimum_version) {"1803"} Else {$env:MinVersion}
 
 #Get UDF to set, if any
-$udf = If ($env:win10_version_udf -eq $null ) {$false} Else {$env:MinVersion}
+$udf = If ($null -eq $env:win10_version_udf ) {$false} Else {$env:win10_version_udf}
 
 #Get current Windows version
 $ver = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ReleaseId
